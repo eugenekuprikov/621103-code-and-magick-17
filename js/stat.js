@@ -40,3 +40,17 @@ var renderColor = function () {
   var colorBlue = 'rgba(' + r + ', ' + g + ', ' + b + ', ' + a + ')';
   return colorBlue;
 }
+
+var getMaxElement = function (arr) {
+  if (arr.length == 0) {
+    alert('массив пустой');
+  } else {
+      var maxElement = arr[0];
+      for (var i = 1; i < arr.length; i++) {
+        if (arr[i] > maxElement) {
+          maxElement = arr[i];
+        }
+      }
+    }
+  return maxElement;
+}
