@@ -31,3 +31,12 @@ var renderText = function (ctx, color, font, baseLine, x, y, y1) {
   ctx.fillText('Ура вы победили!', x, y);
   ctx.fillText('Список результатов:', x, y1);
 }
+
+var renderColor = function () {
+  var r = 0;
+  var g = 0;
+  var b = 255;
+  var a = Math.random();
+  var colorBlue = 'rgba(' + r + ', ' + g + ', ' + b + ', ' + a + ')';
+  return colorBlue;
+}
