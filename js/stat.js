@@ -23,3 +23,11 @@ var renderCloud = function (ctx, x, y, x1, y1, y2, x2, x3, color) {
   ctx.closePath();
   ctx.fill();
 }
+
+var renderText = function (ctx, color, font, baseLine, x, y, y1) {
+  ctx.fillStyle = color;
+  ctx.font = font;
+  ctx.textBaseline = baseLine;
+  ctx.fillText('Ура вы победили!', x, y);
+  ctx.fillText('Список результатов:', x, y1);
+}
