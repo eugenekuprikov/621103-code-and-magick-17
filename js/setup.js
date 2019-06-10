@@ -15,8 +15,9 @@ var ARR_EYES = ['black', 'red', 'blue', 'yellow', 'green'];
 
 var getArrayRandomElement = function (arr) {
   if (arr && arr.length) {
-    return arr[Math.floor(Math.random() * arr.length)];
+    var randomElement = arr[Math.floor(Math.random() * arr.length)];
   }
+  return randomElement;
 };
 
 var createWizard = function () {
@@ -25,8 +26,8 @@ var createWizard = function () {
   var coat = getArrayRandomElement(ARR_COATS);
   var eye = getArrayRandomElement(ARR_EYES);
   var wizard = {name: firstName + ' ' + lastName,
-                coatColor: coat,
-                eyesColor: eye};
+    coatColor: coat,
+    eyesColor: eye};
   return wizard;
 };
 
