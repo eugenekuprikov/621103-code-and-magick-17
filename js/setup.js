@@ -13,3 +13,14 @@ var getArrayRandomElement = function (arr) {
     return arr[Math.floor(Math.random() * arr.length)];
   }
 };
+
+var createWizard = function () {
+  var firstName = getArrayRandomElement(ARR_FIRST_NAMES);
+  var lastName = getArrayRandomElement(ARR_LAST_NAMES);
+  var coat = getArrayRandomElement(ARR_COATS);
+  var eye = getArrayRandomElement(ARR_EYES);
+  var wizard = {name: firstName + ' ' + lastName,
+                coatColor: coat,
+                eyesColor: eye};
+  return wizard;
+};
