@@ -39,3 +39,16 @@ var createWizards = function () {
 };
 
 var arrWizards = createWizards();
+
+for (var i = 0; i < arrWizards.length; i++) {
+  var wizardElement = similarWizardTemplate.cloneNode(true);
+
+  wizardElement.querySelector('.setup-similar-label')
+    .textContent = arrWizards[i].name;
+  wizardElement.querySelector('.wizard-coat')
+    .style.fill = arrWizards[i].coatColor;
+  wizardElement.querySelector('.wizard-eyes')
+    .style.fill = arrWizards[i].eyesColor;
+
+  similarListElement.appendChild(wizardElement);
+}
