@@ -24,3 +24,11 @@ var createWizard = function () {
                 eyesColor: eye};
   return wizard;
 };
+
+var createWizards = function () {
+  var wizards = [];
+  for (var i = 0; i < 4; i++) {
+    wizards[i] = createWizard();
+  }
+  return wizards;
+};
