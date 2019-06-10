@@ -37,3 +37,5 @@ var createWizards = function () {
   }
   return wizards;
 };
+
+var arrWizards = createWizards();
