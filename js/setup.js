@@ -119,3 +119,19 @@ setupSubmit.removeEventListener('keydown', function (evt) {
     submitForm();
   }
 });
+
+var wizardCoat = document.querySelector('.wizard-coat');
+var wizardEyes = document.querySelector('.wizard-eyes');
+var fireballColor = document.querySelector('.setup-fireball-wrap');
+
+wizardCoat.addEventListener('click', function () {
+  wizardCoat.style.fill = getArrayRandomElement(ARR_COATS);
+});
+
+wizardEyes.addEventListener('click', function () {
+  wizardEyes.style.fill = getArrayRandomElement(ARR_EYES);
+});
+
+fireballColor.addEventListener('click', function () {
+  fireballColor.style.background = getArrayRandomElement(FIREBALL_COLORS);
+});
