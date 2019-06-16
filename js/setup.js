@@ -60,3 +60,9 @@ for (var i = 0; i < arrWizards.length; i++) {
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = document.querySelector('.setup-close');
 var setupSubmit = document.querySelector('.setup-submit');
+
+var onPopupEscPress = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    closePopup();
+  }
+};
