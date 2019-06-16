@@ -53,3 +53,7 @@ for (var i = 0; i < arrWizards.length; i++) {
 
   similarListElement.appendChild(wizardElement);
 }
+
+var setupOpen = document.querySelector('.setup-open');
+var setupClose = document.querySelector('.setup-close');
+var setupSubmit = document.querySelector('.setup-submit');
