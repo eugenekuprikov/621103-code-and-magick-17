@@ -97,6 +97,12 @@ setupClose.addEventListener('keydown', function (evt) {
   }
 });
 
+var setupWizardForm = document.querySelector('.setup-wizard-form');
+
+var submitForm = function () {
+  setupWizardForm.submit();
+};
+
 setupSubmit.addEventListener('click', submitForm);
 
 setupSubmit.removeEventListener('click', submitForm);
