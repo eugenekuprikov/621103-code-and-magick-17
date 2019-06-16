@@ -86,3 +86,13 @@ setupOpen.addEventListener('keydown', function (evt) {
     openPopup();
   }
 });
+
+setupClose.addEventListener('click', function () {
+  closePopup();
+});
+
+setupClose.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    closePopup();
+  }
+});
