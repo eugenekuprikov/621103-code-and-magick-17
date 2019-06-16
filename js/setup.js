@@ -96,3 +96,20 @@ setupClose.addEventListener('keydown', function (evt) {
     closePopup();
   }
 });
+
+setupSubmit.addEventListener('click', submitForm);
+
+setupSubmit.removeEventListener('click', submitForm);
+
+
+setupSubmit.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    submitForm();
+  }
+});
+
+setupSubmit.removeEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    submitForm();
+  }
+});
