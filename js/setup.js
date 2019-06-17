@@ -123,15 +123,22 @@ setupSubmit.removeEventListener('keydown', function (evt) {
 var wizardCoat = document.querySelector('.wizard-coat');
 var wizardEyes = document.querySelector('.wizard-eyes');
 var fireballColor = document.querySelector('.setup-fireball-wrap');
+var colors = document.querySelector('.setup-player').querySelectorAll('input');
 
 wizardCoat.addEventListener('click', function () {
-  wizardCoat.style.fill = getArrayRandomElement(ARR_COATS);
+  var coatWizard = getArrayRandomElement(ARR_COATS);
+  wizardCoat.style.fill = coatWizard;
+  colors[0].value = coatWizard;
 });
 
 wizardEyes.addEventListener('click', function () {
-  wizardEyes.style.fill = getArrayRandomElement(ARR_EYES);
+  var eyesWizard = getArrayRandomElement(ARR_EYES);
+  wizardEyes.style.fill = eyesWizard;
+  colors[1].value = eyesWizard;
 });
 
 fireballColor.addEventListener('click', function () {
-  fireballColor.style.background = getArrayRandomElement(FIREBALL_COLORS);
+  var fireball = getArrayRandomElement(FIREBALL_COLORS);
+  fireballColor.style.background = fireball;
+  colors[2].value = fireball;
 });
