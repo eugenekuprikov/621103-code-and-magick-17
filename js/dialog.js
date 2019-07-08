@@ -30,4 +30,11 @@ dialogHandler.addEventListener('mousedown', function (evt) {
     setupDialogElement.style.top = (setupDialogElement.offsetTop - shift.y) + 'px';
     setupDialogElement.style.left = (setupDialogElement.offsetLeft - shift.x) + 'px';
   };
+
+  var onMouseUp = function (upEvt) {
+    upEvt.preventDefault();
+
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+  };
 });
