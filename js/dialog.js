@@ -37,4 +37,15 @@ dialogHandler.addEventListener('mousedown', function (evt) {
     document.removeEventListener('mousemove', onMouseMove);
     document.removeEventListener('mouseup', onMouseUp);
   };
+
+  if (dragged) {
+    var onClickPreventDefault = function (evt) {
+      evt.preventDefault();
+      dialogHandler.removeEventListener('click', onClickPreventDefault)
+    };
+    dialogHandler.addEventListener('click', onClickPreventDefault);
+  }
+
+  document.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('mouseup', onMouseUp);
 });
