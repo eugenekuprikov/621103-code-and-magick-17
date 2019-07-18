@@ -35,14 +35,14 @@
     window.util.isEnterEvent(evt, closePopup);
   });
 
-  var setupUserName = document.querySelector('.setup-user-name');
+  // var setupUserName = document.querySelector('.setup-user-name');
 
-  setupUserName.addEventListener('focus', function () {
-    var isFocused = true;
-  });
-  setupUserName.addEventListener('blur', function () {
-    var isFocused = false;
-  });
+  // setupUserName.addEventListener('focus', function () {
+  //   var isFocused = true;
+  // });
+  // setupUserName.addEventListener('blur', function () {
+  //   var isFocused = false;
+  // });
 
   var setupDialogElement = document.querySelector('.setup');
   var dialogHandler = setupDialogElement.querySelector('.upload');
@@ -83,9 +83,9 @@
     };
 
     if (dragged) {
-      var onClickPreventDefault = function (evt) {
+      var onClickPreventDefault = function () {
         evt.preventDefault();
-        dialogHandler.removeEventListener('click', onClickPreventDefault)
+        dialogHandler.removeEventListener('click', onClickPreventDefault);
       };
       dialogHandler.addEventListener('click', onClickPreventDefault);
     }
