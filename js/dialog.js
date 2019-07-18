@@ -1,83 +1,96 @@
 'use strict';
 
-var setupDialogElement = document.querySelector('.setup');
-var dialogHandler = setupDialogElement.querySelector('.upload');
+(function () {
+  var userDialog = document.querySelector('.setup');
+  var setupOpen = document.querySelector('.setup-open');
+  var setupClose = document.querySelector('.setup-close');
 
-dialogHandler.addEventListener('mousedown', function (evt) {
-  evt.preventDefault();
-
-  var startCoords = {
-    x: evt.clientX,
-    y: evt.clientY
+  var onPopupEscPress = function (evt) {
+    window.util.isEscEvent(evt, closePopup);
   };
 
-  var dragged = false;
-
-  var onMouseMove = function (moveEvt) {
-    moveEvt.preventDefault();
-    dragged = true;
-
-    var shift = {
-      x: startCoords.x - moveEvt.clientX,
-      y: startCoords.y - moveEvt.clientY
-    };
-
-    startCoords = {
-      x: moveEvt.clientX,
-      y: moveEvt.clientY
-    };
-
-    setupDialogElement.style.top = (setupDialogElement.offsetTop - shift.y) + 'px';
-    setupDialogElement.style.left = (setupDialogElement.offsetLeft - shift.x) + 'px';
+  var openPopup = function () {
+    userDialog.classList.remove('hidden');
+    document.addEventListener('keydown', onPopupEscPress);
   };
 
-  var onMouseUp = function (upEvt) {
-    upEvt.preventDefault();
-
-    document.removeEventListener('mousemove', onMouseMove);
-    document.removeEventListener('mouseup', onMouseUp);
+  var closePopup = function () {
+    userDialog.classList.add('hidden');
+    document.removeEventListener('keydown', onPopupEscPress);
   };
 
-  if (dragged) {
-    var onClickPreventDefault = function (evt) {
-      evt.preventDefault();
-      dialogHandler.removeEventListener('click', onClickPreventDefault)
+  setupOpen.addEventListener('click', function () {
+    openPopup();
+  });
+
+  setupOpen.addEventListener('keydown', function (evt) {
+    window.util.isEnterEvent(evt, openPopup);
+  });
+
+  setupClose.addEventListener('click', function () {
+    closePopup();
+  });
+
+  setupClose.addEventListener('keydown', function (evt) {
+    window.util.isEnterEvent(evt, closePopup);
+  });
+
+  var setupUserName = document.querySelector('.setup-user-name');
+
+  setupUserName.addEventListener('focus', function () {
+    var isFocused = true;
+  });
+  setupUserName.addEventListener('blur', function () {
+    var isFocused = false;
+  });
+
+  var setupDialogElement = document.querySelector('.setup');
+  var dialogHandler = setupDialogElement.querySelector('.upload');
+
+  dialogHandler.addEventListener('mousedown', function (evt) {
+    evt.preventDefault();
+
+    var startCoords = {
+      x: evt.clientX,
+      y: evt.clientY
     };
-    dialogHandler.addEventListener('click', onClickPreventDefault);
-  }
 
-  document.addEventListener('mousemove', onMouseMove);
-  document.addEventListener('mouseup', onMouseUp);
-});
+    var dragged = false;
 
-var shopElement = document.querySelector('.setup-artifacts-shop');
-var draggedItem = null;
+    var onMouseMove = function (moveEvt) {
+      moveEvt.preventDefault();
+      dragged = true;
 
-shopElement.addEventListener('dragstart', function (evt) {
-  if (evt.target.tagName.toLowerCase() === 'img') {
-    draggedItem = evt.target;
-    evt.dataTransfer.setData('text/plain', evt.target.alt);
-  }
-});
+      var shift = {
+        x: startCoords.x - moveEvt.clientX,
+        y: startCoords.y - moveEvt.clientY
+      };
 
-var artifactsElement = document.querySelector('.setup-artifacts');
+      startCoords = {
+        x: moveEvt.clientX,
+        y: moveEvt.clientY
+      };
 
-artifactsElement.addEventListener('dragover', function (evt) {
-  evt.preventDefault();
-  return false;
-});
+      setupDialogElement.style.top = (setupDialogElement.offsetTop - shift.y) + 'px';
+      setupDialogElement.style.left = (setupDialogElement.offsetLeft - shift.x) + 'px';
+    };
 
-artifactsElement.addEventListener('drop', function (evt) {
-  evt.target.style.backgroundColor = '';
-  evt.target.appendChild(draggedItem);
-});
+    var onMouseUp = function (upEvt) {
+      upEvt.preventDefault();
 
-artifactsElement.addEventListener('dragenter', function (evt) {
-  evt.target.style.backgroundColor = 'yellow';
-  evt.preventDefault();
-});
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+    };
 
-artifactsElement.addEventListener('dragleave', function (evt) {
-  evt.target.style.backgroundColor = '';
-  evt.preventDefault();
-});
+    if (dragged) {
+      var onClickPreventDefault = function (evt) {
+        evt.preventDefault();
+        dialogHandler.removeEventListener('click', onClickPreventDefault)
+      };
+      dialogHandler.addEventListener('click', onClickPreventDefault);
+    }
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+  });
+})();
